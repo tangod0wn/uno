@@ -1,0 +1,29 @@
+{
+  "name": "unohomeloans",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --entry ./src/js/app.js --output-filename dist/bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangod0wn/uno.git"
+  },
+  "author": "Neil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tangod0wn/uno/issues"
+  },
+  "homepage": "https://github.com/tangod0wn/uno#readme",
+  "dependencies": {
+    "all": "0.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.11.1"
+  }
+}
