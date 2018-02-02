@@ -30,13 +30,13 @@
                 <div class="control-group">
                     <label class="control-label">Current Loan Term Month</label>
                     <div class="col-10">
-                        <input type="text"  id="input_Email"  v-model="currentLoanTermMonth" placeholder="300" class="form-control" required />
+                        <input type="text"  v-model="currentLoanTermMonth" placeholder="" class="form-control" required />
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Payment Type</label>
                     <div class="col-10">
-                        <input type="text" id="input_Password"  v-model="paymentType" placeholder="PrincipalAndInterest" class="form-control" />
+                        <input type="text" v-model="paymentType" placeholder="PrincipalAndInterest" class="form-control" />
                     </div>
                 </div>
             </section>
@@ -44,13 +44,13 @@
                 <div class="control-group">
                     <label class="control-label">New Loan Amount</label>
                     <div class="col-10">
-                        <input type="text" id="input_Username" v-model="newLoanAmount" placeholder="500000" class="form-control" />
+                        <input type="text" v-model="newLoanAmount" placeholder="" class="form-control" />
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">New Interest Rate</label>
                     <div class="col-10">
-                        <input type="text" id="inputFirstname" v-model="newInterestRate" placeholder="3.75" class="form-control">
+                        <input type="text"  v-model="newInterestRate" placeholder="" class="form-control">
                     </div>
                 </div>
             </section>
@@ -58,26 +58,26 @@
                 <div class="control-group">
                     <label class="control-label">Current loan amount</label>
                     <div class="col-10">
-                        <input type="text" v-model="currentLoanAmount" placeholder="500000" class="form-control">
+                        <input type="text" v-model="currentLoanAmount" placeholder="" class="form-control">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">current Interest Rate</label>
                     <div class="col-10">
-                        <input type="text"  v-model="currentInterestRate" placeholder="4.4" class="form-control">
+                        <input type="text"  v-model="currentInterestRate" placeholder="" class="form-control">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">new Loan Term Month</label>
                     <div class="col-10">
-                        <input type="text"  v-model="newLoanTermMonth" placeholder="300" class="form-control">
+                        <input type="text"  v-model="newLoanTermMonth" placeholder="" class="form-control">
                     </div>
-                    <button v-on:click="CaclulateSavings" @click="submitted = true" class="btn btn-outline-success"> Calculate Savings </button>
+                    <button v-on:click="CaclulateSavings" class="btn btn-outline-success"> Calculate Savings </button>
                 </div>
             </section>
         </div>
             <template>
-                <div class="container"v-if="submitted">
+                <div class="col-12 col-md-auto"v-if="submitted">
                     <table class="table">
                         <thead class="thead-inverse">
                         <tr>
@@ -100,8 +100,6 @@
             </template>
         </div>
 </section>
-
-
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
