@@ -1,26 +1,150 @@
 <head>
-
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link href="css/jquery.snippet.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 </head>
-<body id="app-layout" onselectstart="return false">
+<body>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header" style="min-width:80%;">
-
             <!-- Branding Image -->
             <a class="navbar-brand" href="#">
                 <img src="https://cdn.unohomeloans.com.au/images/uno.svg" style="width:75px;">
             </a>
             <div style="font-size:1.1em;font-weight:600;margin-top:1.3em;">Uno Homeloans<sup>&reg;</sup></div>
-            <div style="font-size:1.9em;font-weight:300;line-height:1em;">Homeloan comparison </div>
+            <div style="font-size:1.9em;font-weight:300;line-height:1em;">Savings comparison </div>
         </div>
     </div>
 </nav>
 
+    <section id="demos" style="width:80%;margin: auto 0;">
+        <br>
+        <div id="app">
+        <div id="myWizard" type="get" action="" class="form-horizontal">
+            <section class="step" data-step-title="First step">
+                <div class="control-group">
+                    <label class="control-label">Current Loan Term Month</label>
+                    <div class="col-10">
+                        <input type="text"  id="input_Email"  v-model="currentLoanTermMonth" placeholder="300" class="form-control" required />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Payment Type</label>
+                    <div class="col-10">
+                        <input type="text" id="input_Password"  v-model="paymentType" placeholder="PrincipalAndInterest" class="form-control" />
+                    </div>
+                </div>
+            </section>
+            <section class="step" data-step-title="Second step">
+                <div class="control-group">
+                    <label class="control-label">New Loan Amount</label>
+                    <div class="col-10">
+                        <input type="text" id="input_Username" v-model="newLoanAmount" placeholder="500000" class="form-control" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">New Interest Rate</label>
+                    <div class="col-10">
+                        <input type="text" id="inputFirstname" v-model="newInterestRate" placeholder="3.75" class="form-control">
+                    </div>
+                </div>
+            </section>
+            <section class="step" data-step-title="Third step">
+                <div class="control-group">
+                    <label class="control-label">Current loan amount</label>
+                    <div class="col-10">
+                        <input type="text" v-model="currentLoanAmount" placeholder="500000" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">current Interest Rate</label>
+                    <div class="col-10">
+                        <input type="text"  v-model="currentInterestRate" placeholder="4.4" class="form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">new Loan Term Month</label>
+                    <div class="col-10">
+                        <input type="text"  v-model="newLoanTermMonth" placeholder="300" class="form-control">
+                    </div>
+                    <button v-on:click="CaclulateSavings" @click="submitted = true" class="btn btn-outline-success"> Calculate Savings </button>
+                </div>
+            </section>
+        </div>
+            <template>
+                <div class="container"v-if="submitted">
+                    <table class="table">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>Total Savings</th>
+                            <th>Total Monthly Savings</th>
+                            <th>Total Loan Term Monthly Saving</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>{{savings.totalSaving}}</td>
+                            <td>{{savings.totalMonthlySaving}}</td>
+                            <td>{{savings.totalLoanTermMonthSaving}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+        </div>
+</section>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="/src/js/bootstrap.min.js"></script>
+<script src="/src/js/jquery.snippet.min.js"></script>
+<script src="/src/js/jquery.easyWizard.js"></script>
+<script src="/src/js/scripts.js"></script>
+<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            savings: [],
+            submitted: '',
+            currentLoanTermMonth: '',
+            paymentType: '',
+            newLoanAmount: '',
+            newInterestRate: '',
+            currentLoanAmount: '',
+            currentInterestRate: '',
+            newLoanTermMonth: '',
+        },
+
+        methods: {
+            CaclulateSavings: _.debounce(function() {
+                var app = this
+                axios.get('https://api.unohomeloans.com.au/application-api/miltontest/calculators/refinance?currentLoanTermMonth=' + app.currentLoanTermMonth + '&paymentType=' + app.paymentType + '&newLoanAmount=' + app.newLoanAmount + '&newInterestRate=' + app.newInterestRate + '&currentLoanAmount=' + app.currentLoanAmount + '&currentInterestRate=' + app.currentInterestRate + '&newLoanTermMonth=' + app.newLoanTermMonth)
+                        .then(function (response) {
+                            app.savings = response.data
+
+                        })
+                        .catch(function (error) {
+                            app.errors = "Seems like something went wrong."
+                        })
+            }, 500),
+            isSubmitted: function(){
+                    this.submitted = true
+            },
+        }
+    })
+</script>
 
 </body>
-<script src="src/js/app.js"></script>
-
